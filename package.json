@@ -11,8 +11,6 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.11.40",
-    "@types/react": "^18.0.12",
-    "@types/react-dom": "^18.0.5",
     "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.3",
     "babel-plugin-named-asset-import": "^0.3.8",
@@ -141,5 +139,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.12",
+    "@types/react-dom": "^18.0.5"
   }
 }
