@@ -1,26 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classes from './Modal.css';
 import Auxl from '../../../hoc/Auxl';
 import Backdrop from '../Backdrop/Backdrop';
 
-interface Modal {
+interface ModalProps {
   children?: any;
-  show?: boolean | any;
-  modalClosed: any;
+  show?: boolean | string;
+  modalClosed?: any;
 }
 
-const modal = (props: Modal) => (
-  <Auxl>
-    <Backdrop show={props.show} clicked={props.modalClosed} />
-    <div
-      className={classes.Modal}
-      style={{
-        transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
-        opacity: props.show ? '1' : '0',
-      }}
-    >
-      {props.children}
-    </div>
-  </Auxl>
-);
-export default modal;
+class Modal extends Component<ModalProps> {
+  constructor(props: ModalProps) {
+    super(props);
+  }
+  render() {
+    return (
+      <Auxl>
+        <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
+        <div
+          className={classes.Modal}
+          style={{
+            transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
+            opacity: this.props.show ? '1' : '0',
+          }}
+        >
+          {this.props.children}
+        </div>
+      </Auxl>
+    );
+  }
+}
+export default Modal;
