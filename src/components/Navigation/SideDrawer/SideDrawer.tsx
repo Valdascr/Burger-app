@@ -7,7 +7,7 @@ import Auxl from '../../../hoc/Auxl';
 
 interface SideDrawer {
   open: boolean | string;
-  closed: boolean | string;
+  closed: () => void;
 }
 
 const sideDrawer = (props: SideDrawer) => {

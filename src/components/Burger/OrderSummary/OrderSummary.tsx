@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import Auxl from '../../../hoc/Auxl';
 import Button from '../../UI/Button/Button';
 
+interface OrderSummaryKey {
+  [key: string]: number;
+}
+
 interface OrderSummaryProps {
-  ingredients: any;
+  ingredients: OrderSummaryKey;
   purchaseCancelled: () => void;
   purchaseContinued: () => void;
   price: number;
@@ -13,6 +17,7 @@ class OrderSummary extends Component<OrderSummaryProps> {
   constructor(props: OrderSummaryProps) {
     super(props);
   }
+
   render() {
     const ingredientSummary = Object.keys(this.props.ingredients).map(
       (igKey) => {

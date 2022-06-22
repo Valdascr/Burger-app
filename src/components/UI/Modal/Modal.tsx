@@ -4,15 +4,18 @@ import Auxl from '../../../hoc/Auxl';
 import Backdrop from '../Backdrop/Backdrop';
 
 interface ModalProps {
-  children?: any;
-  show?: boolean | string;
-  modalClosed?: any;
+  children?: JSX.Element | JSX.Element[];
+  show: boolean | string;
+  modalClosed: () => void;
 }
 
 class Modal extends Component<ModalProps> {
   constructor(props: ModalProps) {
     super(props);
   }
+  // componentWillUpdate() {
+  //   console.log('[Modal] WillUpdate');
+  // }
   render() {
     return (
       <Auxl>

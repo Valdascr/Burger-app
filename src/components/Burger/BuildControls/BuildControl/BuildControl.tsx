@@ -4,8 +4,8 @@ import classes from './BuildControl.css';
 
 interface BuildControlProps {
   label: string;
-  removed: any;
-  added: any;
+  removed: () => void;
+  added: () => void;
   disabled: boolean;
 }
 

@@ -3,7 +3,7 @@ import classes from './DrawerToggle.css';
 
 interface DrawerToggle {
   clicked: () => void;
-  onClick: (event: React.MouseEvent<HTMLElement>);
+  // onClick: (event: React.MouseEvent<HTMLElement>);
 }
 
 const drawerToggle = (props: DrawerToggle) => (

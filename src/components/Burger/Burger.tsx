@@ -4,8 +4,12 @@ import React from 'react';
 import classes from './Burger.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
+interface BurgerIngredientKey {
+  [key: string]: number;
+}
+
 interface BurgerProps {
-  ingredients: number | any;
+  ingredients: BurgerIngredientKey;
 }
 
 const burger = (props: BurgerProps) => {
@@ -19,7 +23,7 @@ const burger = (props: BurgerProps) => {
       return arr.concat(el);
     }, []);
   // if (transformedIngredients.length === 0) {
-  //   transformedIngredients = <p>Please start adding ingredients!</p>;
+  //   {transformedIngredients} <p>Please start adding ingredients!</p>;
   // }
   console.log(transformedIngredients);
   return (

@@ -4,22 +4,19 @@ import classes from './Layout.css';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
-// interface Props {}
-
-interface LayoutProps {
-  children: string | number;
-  showSideDrawer: boolean | string;
-  // showSideDrawer: (val: boolean | string) => void;
-  // sideDrawerClosedHandler: () => void;
-  // sideDrawerToggleHandler: () => void;
+interface PropsObject {
+  children?: JSX.Element | JSX.Element[];
 }
 
-// interface SideDrawerToggleHandler {
-//   showSideDrawer: (val: boolean | string) => void;
-// }
+interface LayoutProps {
+  showSideDrawer: boolean;
+}
+// showSideDrawer: (val: boolean | string) => void;
+// sideDrawerToggleHandler: () => void;
+// sideDrawerClosedHandler: () => void;
 
-class Layout extends React.Component<LayoutProps> {
-  constructor(props: LayoutProps) {
+class Layout extends React.Component<PropsObject, LayoutProps> {
+  constructor(props: any) {
     super(props);
     this.state = {
       showSideDrawer: false,

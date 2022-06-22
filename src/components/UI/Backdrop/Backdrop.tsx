@@ -2,8 +2,8 @@ import React from 'react';
 import classes from './Backdrop.css';
 
 interface Backdrop {
-  show: any | null;
-  clicked: any;
+  show: string | boolean;
+  clicked: () => void;
 }
 
 const backdrop = (props: Backdrop) =>

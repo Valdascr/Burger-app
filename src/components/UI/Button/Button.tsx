@@ -2,8 +2,8 @@ import React from 'react';
 import classes from './Button.css';
 
 interface Button {
-  clicked?: any;
-  btnType?: any;
+  clicked?: () => void;
+  btnType: string;
   children: string;
 }
 

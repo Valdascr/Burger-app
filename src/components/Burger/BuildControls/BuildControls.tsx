@@ -3,12 +3,16 @@ import React from 'react';
 import classes from './BuildControls.css';
 import BuildControl from './BuildControl/BuildControl';
 
+interface BuildControlKey {
+  [key: string]: boolean;
+}
+
 interface BuildControlsProps {
   price: number;
   ingredientAdded: (val: string) => void;
   ingredientRemoved: (val: string) => void;
-  disabled: any;
-  purchasable: () => void;
+  disabled: BuildControlKey;
+  purchasable: boolean;
   ordered: () => void;
 }
 
@@ -18,8 +22,6 @@ const controls = [
   { label: 'Cheese', type: 'cheese' },
   { label: 'Meat', type: 'meat' },
 ];
-
-// console.log(typeof controls);
 
 const buildControls = (props: BuildControlsProps) => (
   <div className={classes.BuildControls}>

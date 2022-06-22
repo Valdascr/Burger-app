@@ -8,11 +8,15 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 interface Props {}
 
+interface BurgerBuilderIngredientsKey {
+  [key: string]: any;
+}
+
 interface BurgerBuilderIngredients {
-  ingredients?: any;
-  totalPrice?: any;
-  purchasable?: boolean | any;
-  purchasing?: boolean;
+  ingredients: BurgerBuilderIngredientsKey;
+  totalPrice: number;
+  purchasable: boolean;
+  purchasing: boolean | string;
 }
 
 interface IngredientsObjectsKeys {
@@ -41,6 +45,10 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
       purchasing: false,
     };
   }
+
+  // componentWillUpdate() {
+  //   console.log('[BurgerBuilder] WillUpdate', typeof this.state.ingredients);
+  // }
 
   updatePurchaseState(ingredients: IngredientsObjectsKeys) {
     // const ingredients = {
