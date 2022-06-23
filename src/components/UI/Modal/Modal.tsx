@@ -5,7 +5,7 @@ import Backdrop from '../Backdrop/Backdrop';
 
 interface ModalProps {
   children?: JSX.Element | JSX.Element[];
-  show: boolean | string;
+  show: boolean | string | null;
   modalClosed: () => void;
 }
 

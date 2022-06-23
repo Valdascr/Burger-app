@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Backdrop.css';
 
 interface Backdrop {
-  show: string | boolean;
+  show: string | boolean | null;
   clicked: () => void;
 }
 

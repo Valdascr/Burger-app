@@ -2,10 +2,12 @@ import React, { Component } from 'react';
 import Modal from '../../components/UI/Modal/Modal';
 import Auxl from '../Auxl/Auxl';
 
-// interface WithErrorHandlerProps {
-//   message: string;
-//   error: null;
-// }
+interface WithErrorHandlerProps {
+  //   message: string;
+  //   error: null;
+  //   reqInterceptor: any;
+  //   resInterceptor: any;
+}
 
 const withErrorHandler = (WrappedComponent: any, axios: any) => {
   return class extends Component {
@@ -13,16 +15,21 @@ const withErrorHandler = (WrappedComponent: any, axios: any) => {
       error: null,
     };
     componentWillMount() {
-      axios.interceptors.request.use((req: string) => {
+      this.reqInterceptor = axios.interceptors.request.use((req: string) => {
         this.setState({ error: null });
         return req;
       });
-      axios.interceptors.response.use(
+      this.resInterceptor = axios.interceptors.response.use(
         (res: string) => res,
         (error: null) => {
           this.setState({ error: error });
         }
       );
+    }
+
+    componentWillUnmount() {
+      axios.interceptors.request.eject(this.reqInterceptor);
+      axios.interceptors.response.eject(this.resInterceptor);
     }
 
     errorConfirmedHandler = () => {
