@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Auxl from '../../hoc/Auxl';
+import Auxl from '../Auxl/Auxl';
 import classes from './Layout.css';
-import Toolbar from '../Navigation/Toolbar/Toolbar';
-import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
+import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 
 interface PropsObject {
   children?: JSX.Element | JSX.Element[];

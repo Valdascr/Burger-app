@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Auxl from '../../../hoc/Auxl';
+import Auxl from '../../../hoc/Auxl/Auxl';
 import Button from '../../UI/Button/Button';
 
 interface OrderSummaryKey {
