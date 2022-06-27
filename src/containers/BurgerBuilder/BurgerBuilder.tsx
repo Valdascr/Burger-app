@@ -90,6 +90,7 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
     const newPrice = oldPrice + priceAddition;
     this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
     this.updatePurchaseState(updatedIngredients);
+    console.log(updatedIngredients);
   };
 
   removeIngredientHandler = (type: string) => {
