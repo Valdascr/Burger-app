@@ -11,21 +11,21 @@ import axios from '../../axios-orders';
 
 interface Props {}
 
-// interface BurgerBuilderIngredientsKey {
-//   [key: string, val: number]: ;
-// }
-
-interface IngredientsObjectsKeys {
-  [key: string]: number;
+interface BurgerBuilderIngredientsKey {
+  [key: string]: any;
 }
 
 interface BurgerBuilderIngredients {
-  ingredients: any;
+  ingredients: BurgerBuilderIngredientsKey;
   totalPrice: number;
   purchasable: boolean;
   purchasing: boolean | string;
   loading: boolean;
   error: boolean;
+}
+
+interface IngredientsObjectsKeys {
+  [key: string]: number;
 }
 
 const INGREDIENT_PRICES: IngredientsObjectsKeys = {
@@ -39,7 +39,12 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
   constructor(props: BurgerBuilderIngredients) {
     super(props);
     this.state = {
-      ingredients: null,
+      ingredients: {
+        salad: 0,
+        bacon: 0,
+        cheese: 0,
+        meat: 0,
+      },
       totalPrice: 4,
       purchasable: false,
       purchasing: false,
@@ -51,6 +56,7 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
   // componentWillUpdate() {
   //   console.log('[BurgerBuilder] WillUpdate', typeof this.state.ingredients);
   // }
+
   componentDidMount() {
     axios
       .get(
@@ -90,7 +96,6 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
     const newPrice = oldPrice + priceAddition;
     this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
     this.updatePurchaseState(updatedIngredients);
-    console.log(updatedIngredients);
   };
 
   removeIngredientHandler = (type: string) => {
@@ -119,7 +124,6 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
   };
 
   purchaseContinueHandler = () => {
-    // alert('You continue!');
     this.setState({ loading: true });
     const order = {
       ingredients: this.state.ingredients,
@@ -136,7 +140,7 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
       deliveryMethod: 'fastest',
     };
     axios
-      .post('/orders.json', order)
+      .post('orders.json', order)
       .then((response) => {
         this.setState({ loading: false, purchasing: false });
       })
@@ -152,14 +156,14 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
     for (let key in disabledInfo) {
       disabledInfo[key] = disabledInfo[key] <= 0;
     }
+    // {salad: true, meat: false, ...}
     let orderSummary = null;
 
     let burger = this.state.error ? (
-      <p>Ingredients can't be loaded!</p>
+      <p>Ingredients can't be loadeed</p>
     ) : (
       <Spinner />
     );
-
     if (this.state.ingredients) {
       burger = (
         <Auxl>
@@ -186,14 +190,14 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
     if (this.state.loading) {
       orderSummary = <Spinner />;
     }
-    // {salad: true, meat: false, ...}
     return (
       <Auxl>
         <Modal
           show={this.state.purchasing}
           modalClosed={this.purchaseCancelHandler}
-          {...orderSummary}
-        ></Modal>
+        >
+          {orderSummary}
+        </Modal>
         {burger}
       </Auxl>
     );

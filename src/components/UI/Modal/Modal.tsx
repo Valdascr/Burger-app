@@ -4,7 +4,7 @@ import Auxl from '../../../hoc/Auxl/Auxl';
 import Backdrop from '../Backdrop/Backdrop';
 
 interface ModalProps {
-  children?: JSX.Element | JSX.Element[];
+  children?: JSX.Element | JSX.Element[] | null;
   show: boolean | string | null;
   modalClosed: () => void;
 }
