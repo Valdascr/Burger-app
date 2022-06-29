@@ -1,27 +1,34 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, RouteComponentProps } from 'react-router-dom';
 
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
 
-// interface CheckoutKey {
-//   [key: string]: number;
+interface CheckoutKey {
+  [key: string]: number;
+}
+// interface Props {
+
 // }
 
 interface CheckoutProps {
-  // ingredients: ;
-  location: any;
-  history: any;
+  ingredients: CheckoutKey;
+  location: RouteComponentProps['location'];
+  history: RouteComponentProps['history'];
+  match: RouteComponentProps['match'];
+  price: number;
+  totalprice: number;
 }
 
 class Checkout extends Component<CheckoutProps> {
   state = {
     ingredients: null,
     price: 0,
+    totalPrice: 0,
   };
 
   componentWillMount() {
-    // console.log(typeof ingredients);
+    // console.log(typeof this.state.ingredients);
     const query = new URLSearchParams(this.props.location.search);
     const ingredients = {};
     let price = 0;

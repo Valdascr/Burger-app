@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
+// import { History } from 'history';
+import { RouteComponentProps } from 'react-router-dom';
 
 import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import classes from './ContactData.css';
 import axios from '../../../axios-orders';
 
-class ContactData extends Component {
+interface ContactDataKey {
+  [key: string]: number;
+}
+
+interface CantactDataProps {
+  cilcked?: () => void;
+  ingredients: ContactDataKey;
+  price: number;
+  history: RouteComponentProps['history'];
+}
+
+class ContactData extends Component<CantactDataProps> {
   state = {
     name: '',
     email: '',
@@ -16,7 +29,7 @@ class ContactData extends Component {
     loading: false,
   };
 
-  orderHandler = (event) => {
+  orderHandler = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     this.setState({ loading: true });
     const order = {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route, RouteComponentProps } from 'react-router-dom';
 
 import Auxl from '../../hoc/Auxl/Auxl';
 import Burger from '../../components/Burger/Burger';
@@ -11,9 +12,9 @@ import axios from '../../axios-orders';
 
 interface Props {}
 
-interface BurgerBuilderIngredientsKey {
-  [key: string]: any;
-}
+// interface BurgerBuilderIngredientsKey {
+//   [key: string]: number;
+// }
 
 interface BurgerBuilderIngredients {
   ingredients: any;
@@ -22,6 +23,11 @@ interface BurgerBuilderIngredients {
   purchasing: boolean | string;
   loading: boolean;
   error: boolean;
+  // history: RouteComponentProps['history'];
+}
+
+interface RouteProps {
+  history: RouteComponentProps['history'];
 }
 
 interface IngredientsObjectsKeys {
@@ -45,7 +51,6 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
       purchasing: false,
       loading: false,
       error: false,
-      // history: undefined,
     };
   }
 
