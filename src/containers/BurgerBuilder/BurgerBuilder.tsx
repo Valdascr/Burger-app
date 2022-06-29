@@ -23,12 +23,11 @@ interface BurgerBuilderIngredients {
   purchasing: boolean | string;
   loading: boolean;
   error: boolean;
-  // history: RouteComponentProps['history'];
 }
 
-interface RouteProps {
-  history: RouteComponentProps['history'];
-}
+// interface RouteProps {
+//   history: RouteComponentProps['history'];
+// }
 
 interface IngredientsObjectsKeys {
   [key: string]: number;
@@ -51,6 +50,7 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
       purchasing: false,
       loading: false,
       error: false,
+      // history:
     };
   }
 

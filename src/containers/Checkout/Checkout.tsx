@@ -16,7 +16,7 @@ interface CheckoutProps {
   location: RouteComponentProps['location'];
   history: RouteComponentProps['history'];
   match: RouteComponentProps['match'];
-  price: number;
+  price: string;
   totalprice: number;
 }
 
@@ -28,15 +28,14 @@ class Checkout extends Component<CheckoutProps> {
   };
 
   componentWillMount() {
-    // console.log(typeof this.state.ingredients);
     const query = new URLSearchParams(this.props.location.search);
     const ingredients = {};
     let price = 0;
     for (let param of query.entries()) {
       if (param[0] === 'price') {
-        price = param[1];
+        price = Number.parseFloat(param[1]);
       } else {
-        ingredients[param[0]] = +param[1];
+        ingredients[param[0]] = param[1];
       }
     }
     this.setState({ ingredients: ingredients, totalPrice: price });

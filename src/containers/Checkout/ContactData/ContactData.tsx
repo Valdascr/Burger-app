@@ -6,14 +6,14 @@ import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import classes from './ContactData.css';
 import axios from '../../../axios-orders';
+// import { string } from 'prop-types';
 
 interface ContactDataKey {
   [key: string]: number;
 }
 
 interface CantactDataProps {
-  cilcked?: () => void;
-  ingredients: ContactDataKey;
+  ingredients: any;
   price: number;
   history: RouteComponentProps['history'];
 }

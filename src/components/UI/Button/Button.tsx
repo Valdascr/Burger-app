@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import classes from './Button.css';
 
 interface Button {
-  clicked?: () => void;
+  clicked?: MouseEventHandler;
   btnType: string;
   children: string;
 }
+
+// console.log( typeof props.clicked);
 
 const button = (props: Button) => (
   <button

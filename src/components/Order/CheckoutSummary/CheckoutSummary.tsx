@@ -9,7 +9,7 @@ interface CheckoutSummaryKey {
 }
 
 interface CheckoutSummaryProps {
-  ingredients: CheckoutSummaryKey;
+  ingredients: any;
   checkoutCancelled: () => void;
   checkoutContinued: () => void;
 }
