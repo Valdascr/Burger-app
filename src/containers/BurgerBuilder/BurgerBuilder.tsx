@@ -13,7 +13,7 @@ import axios from '../../axios-orders';
 interface Props {}
 
 // interface BurgerBuilderIngredientsKey {
-//   [key: string]: number;
+//   [key: string]: string;
 // }
 
 interface BurgerBuilderIngredients {
@@ -23,6 +23,7 @@ interface BurgerBuilderIngredients {
   purchasing: boolean | string;
   loading: boolean;
   error: boolean;
+  // history: RouteComponentProps['history'];
 }
 
 // interface RouteProps {
@@ -55,7 +56,7 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
   }
 
   // componentWillUpdate() {
-  //   console.log('[BurgerBuilder] WillUpdate', typeof this.state.ingredients);
+  //   console.log('[BurgerBuilder] WillUpdate', typeof this.props.history.push);
   // }
 
   componentDidMount() {

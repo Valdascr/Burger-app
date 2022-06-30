@@ -3,6 +3,7 @@ import classes from './Button.css';
 
 interface Button {
   clicked?: MouseEventHandler;
+  disabled?: boolean;
   btnType: string;
   children: string;
 }
@@ -11,6 +12,7 @@ interface Button {
 
 const button = (props: Button) => (
   <button
+    disabled={props.disabled}
     className={[classes.Button, classes[props.btnType]].join(' ')}
     onClick={props.clicked}
   >
