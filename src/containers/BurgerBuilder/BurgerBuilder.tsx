@@ -9,8 +9,11 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import axios from '../../axios-orders';
+// import History from 'history';
 
-interface Props {}
+interface Props {
+  history: { pathname: string; search: string }[];
+}
 
 // interface BurgerBuilderIngredientsKey {
 //   [key: string]: string;
@@ -23,7 +26,7 @@ interface BurgerBuilderIngredients {
   purchasing: boolean | string;
   loading: boolean;
   error: boolean;
-  // history: RouteComponentProps['history'];
+  history: { pathname: string; search: string }[];
 }
 
 // interface RouteProps {
@@ -51,7 +54,7 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
       purchasing: false,
       loading: false,
       error: false,
-      // history:
+      history: [],
     };
   }
 
@@ -117,7 +120,6 @@ class BurgerBuilder extends Component<Props, BurgerBuilderIngredients> {
     this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
     this.updatePurchaseState(updatedIngredients);
   };
-
   purchaseHandler = () => {
     this.setState({ purchasing: true });
   };

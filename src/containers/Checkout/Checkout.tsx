@@ -7,9 +7,7 @@ import ContactData from './ContactData/ContactData';
 interface CheckoutKey {
   [key: string]: number;
 }
-// interface Props {
-
-// }
+// interface Props {}
 
 interface CheckoutProps {
   ingredients: CheckoutKey;

@@ -3,22 +3,27 @@ import React from 'react';
 import classes from './Input.css';
 
 interface InputOptionsKey {
-  [key: string]: string;
+  [option: string]: string;
 }
 
 interface InputElementConfigKey {
-  [key: string]: string;
+  [key: string]: boolean;
 }
+
+type OptionsVal = {
+  key?: string;
+  value?: string;
+};
 
 interface InputOptionsProps {
   invalid: boolean;
-  shouldValidate: boolean;
+  shouldValidate: {};
   touched: boolean;
-  elementType: string;
   changed?: (val: any) => void;
   value: string;
-  label: string;
-  elementConfig: InputElementConfigKey;
+  label?: string;
+  elementType: string;
+  elementConfig: {};
 }
 
 const input = (props: InputOptionsProps) => {

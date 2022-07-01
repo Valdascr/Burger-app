@@ -8,16 +8,12 @@ import classes from './ContactData.css';
 import axios from '../../../axios-orders';
 import Input from '../../../components/UI/Input/Input';
 
-interface ContactDataKey {
-  [key: string]: number;
-}
+// interface ContactDataKey {
+//   [key: string]: number;
+// }
 
-interface CantactDataProps {
-  ingredients: any;
-  price: number;
-  // loading?: boolean;
-  history: RouteComponentProps['history'];
-  orderForm: ContactDataKey;
+interface orderHandlerEvent {
+  preventDefault: () => void;
 }
 
 interface checkValidityRules {
@@ -26,103 +22,179 @@ interface checkValidityRules {
   maxLength: number;
 }
 
-interface orderHandlerEvent {
-  preventDefault: () => void;
-}
-
 // interface InputChangedEvent {
 //   changed: () => void;
 // }
 
+interface CantactDataProps {
+  ingredients: any;
+  price: number;
+  loading?: boolean;
+  history: RouteComponentProps['history'];
+  // orderForm: ContactDataKey;
+}
+
+// // Test Interface
+
+// interface Config {
+//   elementType: string;
+//   elementConfig: {
+//     type: string;
+//     placeholder: string;
+//   };
+//   value: string;
+//   validation: {
+//     required: boolean;
+//   };
+//   valid: boolean;
+//   touched: boolean;
+// }
+
+// interface ConfigZipCode {
+//   elementType: string;
+//   elementConfig: {
+//     type: string;
+//     placeholder: string;
+//   };
+//   value: string;
+//   validation: {
+//     required: boolean;
+//     minLength?: number;
+//     maxLength?: number;
+//   };
+//   valid: boolean;
+//   touched: boolean;
+// }
+
+// interface ConfigDelivery {
+//   elementType: string;
+//   elementConfig: {
+//     type: string;
+//     options: [{ value: string; displayValue: string }[]];
+//   };
+//   value: string;
+//   validation: {
+//     required: boolean;
+//     minLength: number;
+//     maxLength: number;
+//   };
+//   valid: boolean;
+//   touched: boolean;
+// }
+
+// // interface SignInFormProps {
+// //   isSignIn: boolean;
+// // }
+
+// interface CantactDataProps {
+//   ingredients: any;
+//   history: RouteComponentProps['history'];
+//   price: number;
+//   // loading?: boolean;
+//   orderForm: {
+//     name: Config;
+//     street: Config;
+//     zipCode: ConfigZipCode;
+//     country: Config;
+//     email: Config;
+//     deliveryMethod: ConfigDelivery;
+//   };
+//   formIsValid: boolean;
+//   loading: boolean;
+// }
+
+// Test Interface
+
 class ContactData extends Component<CantactDataProps> {
   constructor(props: CantactDataProps) {
     super(props);
-    this.state = {
-      orderForm: {
-        name: {
-          elementType: 'input',
-          elementConfig: {
-            type: 'text',
-            placeholder: 'Your Name',
-          },
-          value: '',
-          validation: {
-            required: true,
-          },
-          valid: false,
-          touched: false,
-        },
-        street: {
-          elementType: 'input',
-          elementConfig: {
-            type: 'text',
-            placeholder: 'Street',
-          },
-          value: '',
-          validation: {
-            required: true,
-          },
-          valid: false,
-          touched: false,
-        },
-        zipCode: {
-          elementType: 'input',
-          elementConfig: {
-            type: 'text',
-            placeholder: 'ZIP Code',
-          },
-          value: '',
-          validation: {
-            required: true,
-            minLength: 5,
-            maxLength: 5,
-          },
-          valid: false,
-          touched: false,
-        },
-        country: {
-          elementType: 'input',
-          elementConfig: {
-            type: 'text',
-            placeholder: 'Country',
-          },
-          value: '',
-          validation: {
-            required: true,
-          },
-          valid: false,
-          touched: false,
-        },
-        email: {
-          elementType: 'input',
-          elementConfig: {
-            type: 'email',
-            placeholder: 'Your Email',
-          },
-          value: '',
-          validation: {
-            required: true,
-          },
-          valid: false,
-          touched: false,
-        },
-        deliveryMethod: {
-          elementType: 'select',
-          elementConfig: {
-            options: [
-              { value: 'fastest', displayValue: 'Fastest' },
-              { value: 'cheapest', displayValue: 'Cheapest' },
-            ],
-          },
-          value: 'fastest',
-          validation: {},
-          valid: true,
-        },
-      },
-      formIsValid: false,
-      loading: false,
-    };
   }
+  state = {
+    orderForm: {
+      name: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Your Name',
+        },
+        value: '',
+        validation: {
+          required: true,
+        },
+        valid: false,
+        touched: false,
+      },
+      street: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Street',
+        },
+        value: '',
+        validation: {
+          required: true,
+        },
+        valid: false,
+        touched: false,
+      },
+      zipCode: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'ZIP Code',
+        },
+        value: '',
+        validation: {
+          required: true,
+          minLength: 5,
+          maxLength: 5,
+        },
+        valid: false,
+        touched: false,
+      },
+      country: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'text',
+          placeholder: 'Country',
+        },
+        value: '',
+        validation: {
+          required: true,
+        },
+        valid: false,
+        touched: false,
+      },
+      email: {
+        elementType: 'input',
+        elementConfig: {
+          type: 'email',
+          placeholder: 'Your Email',
+        },
+        value: '',
+        validation: {
+          required: true,
+        },
+        valid: false,
+        touched: false,
+      },
+      deliveryMethod: {
+        elementType: 'select',
+        elementConfig: {
+          options: [
+            { value: 'fastest', displayValue: 'Fastest' },
+            { value: 'cheapest', displayValue: 'Cheapest' },
+          ],
+        },
+        value: 'fastest',
+        validation: true,
+        valid: true,
+        touched: true,
+      },
+    },
+    formIsValid: false,
+    loading: false,
+  };
 
   orderHandler = (event: orderHandlerEvent) => {
     event.preventDefault();
@@ -199,8 +271,10 @@ class ContactData extends Component<CantactDataProps> {
     for (let key in this.state.orderForm) {
       formElementsArray.push({
         id: key,
-        config: this.state.orderForm[key],
+        config: this.state.orderForm[key as keyof typeof this.state.orderForm],
       });
+
+      // as keyof typeof this.state.orderForm
     }
     // let form = null;
     {

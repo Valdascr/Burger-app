@@ -8,7 +8,7 @@ interface Button {
   children: string;
 }
 
-// console.log( typeof props.clicked);
+// console.log(typeof props.clicked);
 
 const button = (props: Button) => (
   <button
